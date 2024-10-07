@@ -11,8 +11,12 @@ mu = {'e': 1, 'i': -0.01}
 
 z_range = [0.1, 1]
 
-gz_target = [0.35, 0.4, 0.45, 0.5]
-num_clusters = 3
+gz_target = [0.2, 0.24, 0.26, 0.28]
+num_clusters = 2
+
+# To view the bifurcation from 2 to 3 clusters, comment out the above two lines and uncomment the following two lines.
+# gz_target = [0.35, 0.4, 0.45, 0.5]
+# num_clusters = 3
 
 t_max = 200
 
@@ -29,18 +33,13 @@ Visualizer().plot_subplots_for_gz(z_array, g_z_array, tts_array, predicted_value
 
 T = 400
 
-if num_clusters == 2:
-    clusters_visualizer = ClustersVisualizer(num_clusters, tau, g, mu, si, coefficients, func_type)
-    clusters_visualizer.steady_state_vs_gz(gz_target, theta_df_dict)
-    two_clust_map = SpikingModelComparison(num_clusters, T, tau, g, mu, si, coefficients, func_type)
-    two_clust_map.comparison_plots(gz_target)
-    
-elif num_clusters == 3:
-    clusters_visualizer = ClustersVisualizer(num_clusters, tau, g, mu, si, coefficients, func_type)
-    clusters_visualizer.steady_state_vs_gz(gz_target, theta_df_dict)
-    
-    three_clust_map = SpikingModelComparison(num_clusters, T, tau, g, mu, si, coefficients, func_type)
-    three_clust_map.comparison_plots(gz_target)
+
+clusters_visualizer = ClustersVisualizer(num_clusters, tau, g, mu, si, coefficients, func_type)
+clusters_visualizer.steady_state_vs_gz(gz_target, theta_df_dict)
+two_clust_map = SpikingModelComparison(num_clusters, T, tau, g, mu, si, coefficients, func_type)
+two_clust_map.comparison_plots(gz_target)
+
+
     
 
 
